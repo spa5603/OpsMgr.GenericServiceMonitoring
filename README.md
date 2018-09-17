@@ -1,1 +1,1 @@
-# OpsMgr.GenericServiceMonitoring
+# OpsMgr GenericServiceMonitoring ManagementPack
