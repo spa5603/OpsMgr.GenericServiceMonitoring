@@ -14,7 +14,7 @@ ServiceA is monitored for HostA and HostB. There is no exclusion.
 
 ServiceB is monitored on every Host. There is no exclusion.
 
-**Service*;*;HostB**
+**Service*;*;HostB***
 
 Service*(wildcard) is monitored on every Host and excluded for HostB.
 
