@@ -9,7 +9,10 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 __ServiceName;Include;Exclude__
 
 Include: Comma separated List of Servername(ShortName)
+
 Exclude: Comma separated List of Servername(ShortName)
+
+*: Every Host in the "Microsoft.SystemCenter.ManagedComputerServer" Class
 
 **ServiceA;HostA,HostB;none**
 
