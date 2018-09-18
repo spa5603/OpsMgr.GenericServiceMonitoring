@@ -6,25 +6,25 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 ## Configuration:
 ##### 1. CSV File Layout:
 
-__ServiceName;Include;Exclude__
+   __ServiceName;Include;Exclude__
 
-Include: Comma separated List of Servername(ShortName)
+    Include: Comma separated List of Servername(ShortName)
 
-Exclude: Comma separated List of Servername(ShortName)
+    Exclude: Comma separated List of Servername(ShortName)
 
-*: Every Host in the "Microsoft.SystemCenter.ManagedComputerServer" Class
+    *: Every Host in the "Microsoft.SystemCenter.ManagedComputerServer" Class
 
-__ServiceA;HostA,HostB;none__
+   __ServiceA;HostA,HostB;none__
 
-ServiceA is monitored for HostA and HostB. There is no exclusion.
+    ServiceA is monitored for HostA and HostB. There is no exclusion.
 
-__ServiceB;*;none__
+  __ServiceB;*;none__
 
-ServiceB is monitored on every Host. There is no exclusion.
+    ServiceB is monitored on every Host. There is no exclusion.
 
-__Service*;*;HostB__
+  __Service*;*;HostB__
 
-Service*(wildcard) is monitored on every Host and excluded for HostB.
+    Service*(wildcard) is monitored on every Host and excluded for HostB.
 
 
 ##### 2. Start Sevice Ingest Task
