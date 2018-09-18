@@ -1,12 +1,12 @@
 # OpsMgr GenericServiceMonitoring ManagementPack
 
-Introduction:
+## Introduction:
 
-Configuration:
+## Configuration:
 
-Examples:
+## Examples:
 
-Visuals:
+## Visuals:
 
-State View Discoverd Services:
+##### State View Discoverd Services:
 ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/StateView%20-%20Discovered%20Services.jpg)
