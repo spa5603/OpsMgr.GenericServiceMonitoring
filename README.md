@@ -7,12 +7,15 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 ##### CSV File Layout:
 
 **ServiceA;HostA,HostB;none**
+
 ServiceA is monitored for HostA and HostB. There is no exclusion.
 
 **ServiceB;*;none**
+
 ServiceB is monitored on every Host. There is no exclusion.
 
 **Service*;*;HostB**
+
 Service*(wildcard) is monitored on every Host and excluded for HostB.
 
 ##### Start Sevice Ingest Task
