@@ -43,13 +43,18 @@ __Execute Task__
 
 ## Examples:
 
-__ServiceA;HostA,HostB;none__
+1. CSV:
+ServiceA;HostA,HostB;none
 
-__ServiceB;*;none__
+ServiceB;*;none
 
-__Service*;*;HostB__
+Service*;*;HostB
 
-__ServiceA;*;HostC,HostD__
+ServiceA;*;HostC,HostD
+
+2. ServiceFilePath:
+
+C:\SCOM\GenSerMon.csv 
 
 
 ## Views:
