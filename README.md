@@ -14,11 +14,11 @@ Exclude: Comma separated List of Servername(ShortName)
 
 *: Every Host in the "Microsoft.SystemCenter.ManagedComputerServer" Class
 
-**ServiceA;HostA,HostB;none**
+__ServiceA;HostA,HostB;none__
 
 ServiceA is monitored for HostA and HostB. There is no exclusion.
 
-**ServiceB;*;none**
+__ServiceB;*;none__
 
 ServiceB is monitored on every Host. There is no exclusion.
 
@@ -42,6 +42,11 @@ __Execute Task__
 ##### 3 .Check discoverd Services
 
 ## Examples:
+
+__ServiceA;HostA,HostB;none__
+__ServiceB;*;none__
+__Service*;*;HostB__
+__ServiceA;*;HostC,HostD__
 
 ## Views:
 
