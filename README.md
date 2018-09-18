@@ -26,6 +26,7 @@ __Service*;*;HostB__
 
 Service*(wildcard) is monitored on every Host and excluded for HostB.
 
+
 ##### 2. Start Sevice Ingest Task
 
 __Execute Task__
