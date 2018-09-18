@@ -4,7 +4,7 @@
 It is often necessary to monitor windows services across your entire SCOM environment. This ManagementPack processes the services, provided by CSV and detects them into their own class. Service wildcard is also possible.
 
 ## Configuration:
-##### CSV File Layout:
+##### 1. CSV File Layout:
 
 __ServiceName;Include;Exclude__
 
@@ -23,9 +23,9 @@ __Service*;*;HostB__
 
 Service*(wildcard) is monitored on every Host and excluded for HostB.
 
-##### Start Sevice Ingest Task
+##### 2. Start Sevice Ingest Task
 
-##### Check discoverd Services
+##### 3 .Check discoverd Services
 
 ## Examples:
 
