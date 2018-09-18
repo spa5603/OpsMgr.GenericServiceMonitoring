@@ -29,13 +29,13 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 
 ##### 2. Start Sevice Ingest Task
 
-__Execute Task__
+   Execute Task
 
-  1. The Task which starts the CSV ingestion process in found at the "Management Server View". Select the MS on which the CSV is located      and execute the Task. (Views -> State View Management Server)
-  2. Click "Override" to enter the path to the CSV.
+   1. The Task which starts the CSV ingestion process in found at the "Management Server View". Select the MS on which the CSV is             located and execute the Task. (Views -> State View Management Server)
+   2. Click "Override" to enter the path to the CSV.
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/RunTask.jpg)
   
-  3. Enter the path to the CSV file.
+   3. Enter the path to the CSV file.
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/OverrideParameter.jpg)
 
 
