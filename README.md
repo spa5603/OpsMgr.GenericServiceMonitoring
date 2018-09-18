@@ -29,7 +29,7 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 
 ##### 2. Start Sevice Ingest Task
 
-   Execute Task
+   __Execute Task__
 
    1. The Task which starts the CSV ingestion process in found at the "Management Server View". Select the MS on which the CSV is             located and execute the Task. (Views -> State View Management Server)
    2. Click "Override" to enter the path to the CSV.
@@ -39,7 +39,8 @@ It is often necessary to monitor windows services across your entire SCOM enviro
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/OverrideParameter.jpg)
 
 
-##### 3 .Check discoverd Services
+##### 3. Check discoverd Services
+      The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed to meet your               requirements.
 
 ## Examples:
 
