@@ -44,14 +44,20 @@ __Execute Task__
 ## Examples:
 
   1. CSV:
+  
     ServiceA;HostA,HostB;none
+    
     ServiceB;*;none
+    
     Service*;*;HostB
+    
     ServiceA;*;HostC,HostD
+    
 
   2. ServiceFilePath:
-    C:\SCOM\GenSerMon.csv 
-
+  
+    C:\SCOM\GenSerMon.csv
+    
 
 ## Views:
 
