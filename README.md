@@ -7,4 +7,4 @@ Configuration:
 Examples:
 
 Visuals:
-![alt text](https://raw.githubusercontent.com/spa5603/OpsMgr.GenericServiceMonitoring/Graphics/StateViewManagementServer.jpg)
+![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/StateView%20-%20Discovered%20Services.jpg)
