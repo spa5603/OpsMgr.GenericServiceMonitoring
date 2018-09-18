@@ -44,7 +44,7 @@ This ManagementPack is currently under development and may contain errors. Pleas
 
 
 ##### 3. Check discoverd Services
-      The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed to meet your requirements.
+      The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed to meet your requirements. So it can take up to 24 hours until the service can be discovered.
 
 ## Examples:
 
