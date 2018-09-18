@@ -6,6 +6,11 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 ## Configuration:
 ##### CSV File Layout:
 
+__ServiceName;Include;Exclude__
+
+Include: Comma separated List of Servername(ShortName)
+Exclude: Comma separated List of Servername(ShortName)
+
 **ServiceA;HostA,HostB;none**
 
 ServiceA is monitored for HostA and HostB. There is no exclusion.
