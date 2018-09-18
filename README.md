@@ -44,9 +44,13 @@ __Execute Task__
 ## Examples:
 
 __ServiceA;HostA,HostB;none__
+
 __ServiceB;*;none__
+
 __Service*;*;HostB__
+
 __ServiceA;*;HostC,HostD__
+
 
 ## Views:
 
