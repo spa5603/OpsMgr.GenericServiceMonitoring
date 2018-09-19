@@ -3,6 +3,8 @@
 ## Introduction:
 It is often necessary to monitor windows services across your entire SCOM environment. This MP gives you the ability to easily and quickly discover and monitor hundreds of services. The (*)wildcard notation allows great flexibility in discovering the services you are looking for.
 
+The MP is tested in System Center Operations Manager 2012 R2 and 1807.
+
 This ManagementPack is currently under development and may contain errors. Please always test it in a DEV environment first.
 
 ## Configuration:
