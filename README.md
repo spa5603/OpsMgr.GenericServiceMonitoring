@@ -6,7 +6,7 @@ It is often necessary to monitor windows services across your entire SCOM enviro
 This ManagementPack is currently under development and may contain errors. Please always test it in a DEV environment first.
 
 ## Configuration:
-##### 1. CSV File Layout:
+##### 1. CSV File Schema:
 
    __ServiceName;Include;Exclude__
 
