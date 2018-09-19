@@ -1,7 +1,7 @@
 # OpsMgr GenericServiceMonitoring ManagementPack
 
 ## Introduction:
-It is often necessary to monitor windows services across your entire SCOM environment. This ManagementPack processes the services, provided by CSV and detects them into their own class. Service wildcard is also possible.
+It is often necessary to monitor windows services across your entire SCOM environment. This MP gives you the ability to easily and quickly discover and monitor hundreds of services. The (*)wildcard notation allows great flexibility in discovering the services you are looking for.
 
 This ManagementPack is currently under development and may contain errors. Please always test it in a DEV environment first.
 
