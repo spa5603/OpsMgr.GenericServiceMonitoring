@@ -16,8 +16,11 @@ This ManagementPack is currently under development and may contain errors. Pleas
 - System Center Operations Manager 2016 (LTSC)
 - System Center Operations Manager 1807 (SAC)
 
-## Configuration:
-##### 1. CSV File Schema:
+## How-To:
+##### 1. Import the Management Pack into SCOM.
+##### 2. Create the CSV file on one of your management server. 
+
+###### CSV File Schema:
 
    __ServiceName;Include;Exclude__
 
@@ -55,7 +58,7 @@ This ManagementPack is currently under development and may contain errors. Pleas
 
 
 ##### 3. Check discoverd Services
-      The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed to meet your requirements. So it can take up to 24 hours until the service can be discovered.
+The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed to meet your requirements. So it can take up to 24 hours until the service can be discovered.
 
 ## Examples:
 
