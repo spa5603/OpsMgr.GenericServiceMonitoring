@@ -62,7 +62,7 @@ The discovery is configured to run every 24h and detect newly processed services
 
 #### XML tag:
       <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
- >      <IntervalSeconds>600</IntervalSeconds>
+ >      <IntervalSeconds>86400</IntervalSeconds>
        <SyncTime></SyncTime>
        <ScriptName>OpsMgr.GenericServiceMonitoring.Scripts.GetServicesToMonitor.Script.ps1</ScriptName>
 
