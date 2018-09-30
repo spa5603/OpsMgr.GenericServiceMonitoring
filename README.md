@@ -17,12 +17,12 @@ This ManagementPack is currently under development and may contain errors. Pleas
 - System Center Operations Manager 1807 (SAC)
 
 ## How-To:
-##### 1. Import the Management Pack into SCOM.
-##### 2. Create the CSV file on one of your management server. 
+#### 1. Import the Management Pack into SCOM.
+#### 2. Create the CSV file on one of your management server. 
 
-###### CSV File Schema:
+   ##### CSV File Schema:
 
-   __ServiceName;Include;Exclude__
+   ##### __ServiceName;Include;Exclude__
 
     Include: Comma separated List of Servername(ShortName)
 
