@@ -34,22 +34,20 @@ This ManagementPack is currently under development and may contain errors. Pleas
    
    __ServiceA;HostA,HostB;none__
 
-    ServiceA is monitored for HostA and HostB. There is no exclusion.
+    ServiceA is monitored for HostA and HostB. There is no (none) exclusion.
 
   __ServiceB;*;none__
 
-    ServiceB is monitored on every Host. There is no exclusion.
+    ServiceB is monitored on every Host. There is no (none) exclusion.
 
   __Service*;*;HostB__
 
     Service*(wildcard) is monitored on every Host and excluded for HostB.
 
 
-##### 2. Start Sevice Ingest Task
+### 3. Start Sevice Ingest Task
 
-   __Execute Task__
-
-   1. The Task which starts the CSV ingestion process in found at the "Management Server View". Select the MS on which the CSV is             located and execute the Task. (Views -> State View Management Server)
+   1. The Task which starts the CSV ingestion process is found at the "Management Server View". Select the management server on which the CSV is located and execute the Task. (Example at Views -> State View Management Server)
    2. Click "Override" to enter the path to the CSV.
    
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/RunTask.jpg)
@@ -59,33 +57,15 @@ This ManagementPack is currently under development and may contain errors. Pleas
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/OverrideParameter.jpg)
 
 
-##### 3. Check discoverd Services
-The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed to meet your requirements. So it can take up to 24 hours until the service can be discovered.
-
-## Examples:
-
-  1. CSV:
-  
-    ServiceA;HostA,HostB;none
-    
-    ServiceB;*;none
-    
-    Service*;*;HostB
-    
-    ServiceA;*;HostC,HostD
-    
-
-  2. ServiceFilePath:
-  
-    C:\SCOM\GenSerMon.csv
-    
+### 4. Check discoverd Services
+The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed at the xml code to meet your requirements. So it can take up to 24 hours until the service can be discovered.
 
 ## Views:
 
-##### State View Discoverd Services:
+### State View Discoverd Services:
 ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/StateView%20-%20Discovered%20Services.jpg)
 
-##### State View Management Server
+### State View Management Server
 ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/StateView%20-%20Management%20Server.jpg)
 
 ## License Terms
