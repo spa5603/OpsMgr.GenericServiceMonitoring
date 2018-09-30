@@ -1,9 +1,9 @@
 # OpsMgr GenericServiceMonitoring ManagementPack
 
 ## Introduction:
-It is often necessary to monitor windows services across your entire SCOM environment. This MP gives you the ability to easily and quickly discover and monitor hundreds of services. The wildcard(*) notation allows great flexibility in discovering the services you are looking for.
+It is often necessary to monitor windows services across your entire SCOM environment. This Management Pack gives you the ability to easily and quickly discover and monitor hundreds of services. The wildcard(*) notation allows great flexibility in discovering the services you are looking for.
 
-This ManagementPack is currently under development and may contain errors. Please always test it in DEV environment befor importing the MP to production.
+This Management Pack is currently under development and may contain errors. Please always test it in DEV environment befor importing the Management Pack to production.
 
 ## Key Features
 
@@ -13,41 +13,41 @@ This ManagementPack is currently under development and may contain errors. Pleas
 ## Supported Environments
 
 - System Center Operations Manager 2012 R2
-- System Center Operations Manager 2016 (LTSC)
-- System Center Operations Manager 1807 (SAC)
+- System Center Operations Manager Long Term Servicing Channel (2016)
+- System Center Operations Manager Semi-Annual Channel (1807)
 
 ## How-To:
 ### 1. Import the Management Pack into SCOM.
 ### 2. Create the CSV file on one of your management server. 
 
-   #### CSV File Schema:
+   #### CSV file schema:
 
    __ServiceName;Include;Exclude__
 
-    Include: Comma separated List of Servername(ShortName)
+    Include: comma-separated list of servernames (ShortName; not FQDN)
 
-    Exclude: Comma separated List of Servername(ShortName)
+    Exclude: comma-separated list of servernames (ShortName; not FQDN)
 
-    *: Every Host in the "Microsoft.SystemCenter.ManagedComputerServer" ClasS
+    *: Every host in the "Microsoft.SystemCenter.ManagedComputerServer" class
     
-   #### CSV File Examples:
+   #### CSV file examples:
    
    __ServiceA;HostA,HostB;none__
 
-    ServiceA is monitored for HostA and HostB. There is no (none) exclusion.
+    serviceA is monitored for hostA and hostB. There is no (none) exclusion.
 
   __ServiceB;*;none__
 
-    ServiceB is monitored on every Host. There is no (none) exclusion.
+    serviceB is monitored on every host. There is no (none) exclusion.
 
   __Service*;*;HostB__
 
-    Service*(wildcard) is monitored on every Host and excluded for HostB.
+    service*(wildcard) is monitored on every host and excluded for hostB.
 
 
-### 3. Start Sevice Ingest Task
+### 3. Start service ingestion task
 
-   1. The Task which starts the CSV ingestion process is found at the "Management Server View". Select the management server on which the CSV is located and execute the Task. (Example at Views -> State View Management Server)
+   1. The task which starts the CSV ingestion process is found at the "Management Server View". Select the management server on which the CSV is located and execute the task. (example at Views -> State View Management Server)
    2. Click "Override" to enter the path to the CSV.
    
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/RunTask.jpg)
@@ -57,8 +57,14 @@ This ManagementPack is currently under development and may contain errors. Pleas
   ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/OverrideParameter.jpg)
 
 
-### 4. Check discoverd Services
-The discovery is configured to run every 24h and detect newly processed servers. This setting can be changed at the xml code to meet your requirements. So it can take up to 24 hours until the service can be discovered.
+### 4. Check discoverd services
+The discovery is configured to run every 24h and detect newly processed services. This setting can be changed at the xml code to meet your requirements. So it can take up to 24 hours until the service can be discovered.
+
+#### XML tag:
+   <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+    <IntervalSeconds>600</IntervalSeconds>
+    <SyncTime></SyncTime>
+    <ScriptName>OpsMgr.GenericServiceMonitoring.Scripts.GetServicesToMonitor.Script.ps1</ScriptName>
 
 ## Views:
 
