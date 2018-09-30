@@ -61,10 +61,10 @@ This Management Pack is currently under development and may contain errors. Plea
 The discovery is configured to run every 24h and detect newly processed services. This setting can be changed at the xml code to meet your requirements. So it can take up to 24 hours until the service can be discovered.
 
 #### XML tag:
-   <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
-    <IntervalSeconds>600</IntervalSeconds>
-    <SyncTime></SyncTime>
-    <ScriptName>OpsMgr.GenericServiceMonitoring.Scripts.GetServicesToMonitor.Script.ps1</ScriptName>
+      <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+ >      <IntervalSeconds>600</IntervalSeconds>
+       <SyncTime></SyncTime>
+       <ScriptName>OpsMgr.GenericServiceMonitoring.Scripts.GetServicesToMonitor.Script.ps1</ScriptName>
 
 ## Views:
 
