@@ -68,6 +68,9 @@ The discovery is configured to run every 24h and detect newly processed servers.
 ### State View Management Server
 ![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/StateView%20-%20Management%20Server.jpg)
 
+## Feedback
+Please let me know if you have any problems or questions about the Management Pack. So don't hesitate to contact me via github or twitter @_pabstsebastian
+
 ## License Terms
 OpsMgr GenericServiceMonitoring Copyright (C) 2018 Sebastian Pabst (spa5603)
 
