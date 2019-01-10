@@ -15,6 +15,7 @@ This Management Pack is currently under development and may contain errors. Plea
 - System Center Operations Manager 2012 R2
 - System Center Operations Manager Long Term Servicing Channel (2016)
 - System Center Operations Manager Semi-Annual Channel (1807)
+- PowerShell 3.0 is a minimal requirement for the agents on which the requested services should be monitored
 
 ## How-To:
 ### 1. Import the Management Pack into SCOM.
