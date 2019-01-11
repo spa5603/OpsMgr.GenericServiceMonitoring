@@ -70,7 +70,12 @@ The discovery is configured to run every 24h and detect newly processed services
 
 ### 5. In case of an error
 Important events (such as errors or discovered services) are logged in the Operatiosn Manager Log on the management server as well as on the agent. They can be found at event id 5603.
+
 There is also an alarm rule that comes up when a service should be discovered but he does not exist on the server.
+
+### AlertRule:
+![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/Rule.jpg)
+
 
 ## Views:
 
