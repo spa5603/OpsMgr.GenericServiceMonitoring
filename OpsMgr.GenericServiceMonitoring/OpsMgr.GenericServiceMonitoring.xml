@@ -3,7 +3,7 @@
   <Manifest>
     <Identity>
       <ID>OpsMgr.GenericServiceMonitoring</ID>
-      <Version>1.0.0.0</Version>
+      <Version>1.1.0.0</Version>
     </Identity>
     <Name>OpsMgr.GenericServiceMonitoring</Name>
     <References>
@@ -57,11 +57,12 @@
 # NAME:			OpsMgr.GenericServiceMonitoring.Scripts.GetServicesToMonitor.Script.ps1
 # AUTHOR:		Sebastian Pabst
 # CREATED:		29.08.2018
-# UPDATE:		12.09.2018
+# UPDATE:		11.01.2019
 # PARAMETER:	$sourceId,$managedEntityId,$OverrideValue,$computerName
-# VERSION:		1.1
-# CHANGES:		1.1 CleanUp script
-# HISTORY:		1.0 Initial script creation
+# VERSION:		1.2
+# CHANGES:		1.2 Add some logging for better usage
+# HISTORY:		1.1 CleanUp script
+#				1.0 Initial script creation
 ###########################################################################################
 
 # Declaration of Parameters
@@ -211,11 +212,11 @@ if ($Error.Count -gt 0) {$API.LogScriptEvent($ScriptName,5603,1,"The following E
 # NAME:			OpsMgr.GenericServiceMonitoring.Scripts.StartGenSerMonIngestionScript.ps1
 # AUTHOR:		Sebastian Pabst
 # CREATED:		30.08.2018
-# UPDATE:		-
+# UPDATE:		11.01.2019
 # PARAMETER:	-
-# VERSION:		1.0
-# CHANGES:		-
-# HISTORY:		-
+# VERSION:		1.1
+# CHANGES:		1.1 Add some logging for better usage
+# HISTORY:		1.0 Initial script creation
 ###########################################################################################
 
 # Declaration of Parameters
@@ -226,6 +227,12 @@ param(
 # Declaration of Scriptname
 [string]$ScriptName = 'OpsMgr.GenericServiceMonitoring.Scripts.StartGenSerMonIngestionScript.ps1'
 
+# Initialization of MOMAPI
+$API = New-Object -comObject 'MOM.ScriptAPI'
+
+# Write Start Event to OperationsManager Log
+$API.LogScriptEvent($ScriptName,5603,0,"Script is starting!")
+
 # Declaration of Variables
 $ManagementPack = Get-SCOMManagementPack -Name 'OpsMgr.GenericServiceMonitoring'
 $Discovery = Get-SCOMDiscovery -Name 'OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Discoveries.GetServicesToMonitor.Discovery'
@@ -233,7 +240,7 @@ $Target = Get-SCOMClass -Name 'Microsoft.SystemCenter.ManagedComputerServer'
 
 # Test Path of Service CSV
 if (!(Test-Path -Path $ServiceFilePath)) {
-    "ServiceFile not found in $ServiceFilePath!"
+    $API.LogScriptEvent($ScriptName,5603,1,"ServiceFile not found in $ServiceFilePath! Script will be terminated!")
 	exit 0
 }
 
@@ -248,7 +255,7 @@ If ($ServicesToIngest.count -eq 0) {
         $Override.Status = 'PendingDelete'
         $ManagementPack.Verify()
         $ManagementPack.AcceptChanges()
-		'No Service is configured to monitor and the configured override was deleted!'
+		$API.LogScriptEvent($ScriptName,5603,0,"No Service is configured to monitor and the configured override was deleted!")
 		exit 0
     }
 }
@@ -264,7 +271,7 @@ foreach ($ServiceToIngest in $ServicesToIngest) {
 $OverrideString = $OverrideString.Substring(0,$OverrideString.Length-1)
 
 # Write information Event to OperationsManager Log
-"The following String is used for Override:" + "`n" +  $OverrideString
+$API.LogScriptEvent($ScriptName,5603,0,"The following String is used for Override:" + "`n" +  $OverrideString)
 
 # Setup the Override
 $OverrideName = 'OpsMgr.GenericServiceMonitoring.Overrides.SetMonitoredServices.Override'
@@ -281,12 +288,12 @@ $ManagementPack.AcceptChanges()
 
 # Write Event to OperationsManager Log in case of Error
 if ($Error.Count -gt 0) {
-	"The following Errors occured: $Error"
+	$API.LogScriptEvent($ScriptName,5603,1,"The following Errors occured: $Error")
 }
 
 # Write Success Event to OperationsManager Log
 else {
-	"Script has finished successfully."
+	$API.LogScriptEvent($ScriptName,5603,0,"Script has finished successfully.")
 }]]></ScriptBody>
                 <Parameters>
                   <Parameter>
@@ -322,6 +329,82 @@ else {
         </DataSource>
       </Discovery>
     </Discoveries>
+    <Rules>
+      <Rule ID="OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Rules.NotFoundServices.Rule" Target="SystemCenter!Microsoft.SystemCenter.ManagedComputerServer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+        <Category>Alert</Category>
+        <DataSources>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.EventProvider">
+            <ComputerName>$Target/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</ComputerName>
+            <LogName>Operations Manager</LogName>
+            <Expression>
+              <And>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="UnsignedInteger">EventDisplayNumber</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="UnsignedInteger">5603</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">PublisherName</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="String">Health Service Script</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">EventLevel</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="Integer">2</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <RegExExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">EventDescription</XPathQuery>
+                    </ValueExpression>
+                    <Operator>ContainsSubstring</Operator>
+                    <Pattern>following Services should be discoverd:</Pattern>
+                  </RegExExpression>
+                </Expression>
+              </And>
+            </Expression>
+          </DataSource>
+        </DataSources>
+        <WriteActions>
+          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert">
+            <Priority>1</Priority>
+            <Severity>1</Severity>
+            <AlertName />
+            <AlertDescription />
+            <AlertOwner />
+            <AlertMessageId>$MPElement[Name="OpsMgr.GenericServiceMonitoring.Rules.NotFoundServices.Rule.AlertMessage"]$</AlertMessageId>
+            <AlertParameters>
+              <AlertParameter1>$Data[Default='']/EventDescription$</AlertParameter1>
+            </AlertParameters>
+            <Suppression>
+              <SuppressionValue>$Data/EventDisplayNumber$</SuppressionValue>
+              <SuppressionValue>$Data/PublisherName$</SuppressionValue>
+              <SuppressionValue>$Data/EventLevel$</SuppressionValue>
+              <SuppressionValue>$Data/EventDescription$</SuppressionValue>
+            </Suppression>
+          </WriteAction>
+        </WriteActions>
+      </Rule>
+    </Rules>
     <Tasks>
       <Task ID="OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Tasks.StartGenSerMonIngestion.Task" Accessibility="Internal" Target="SystemCenter!Microsoft.SystemCenter.ManagementServer" Enabled="true" Timeout="300" Remotable="true">
         <Category>Custom</Category>
@@ -427,6 +510,7 @@ else {
     </FolderItems>
     <StringResources>
       <StringResource ID="OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Monitors.ServiceWatcher.UnitMonitor.AlertMessage" />
+      <StringResource ID="OpsMgr.GenericServiceMonitoring.Rules.NotFoundServices.Rule.AlertMessage" />
     </StringResources>
   </Presentation>
   <LanguagePacks>
@@ -471,6 +555,14 @@ else {
         <DisplayString ElementID="OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Monitors.ServiceWatcher.UnitMonitor" SubElementID="NotRunning">
           <Name>NotRunning</Name>
           <Description>NotRunning</Description>
+        </DisplayString>
+        <DisplayString ElementID="OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Rules.NotFoundServices.Rule">
+          <Name>OpsMgr GenericServiceMonitoring Rules NotFoundServices Rule</Name>
+          <Description>Description for the new rule</Description>
+        </DisplayString>
+        <DisplayString ElementID="OpsMgr.GenericServiceMonitoring.Rules.NotFoundServices.Rule.AlertMessage">
+          <Name>OpsMgr GenericServiceMonitoring Service not Found</Name>
+          <Description>{0}</Description>
         </DisplayString>
         <DisplayString ElementID="OpsMgr.GenericServiceMonitoring.OpsMgr.GenericServiceMonitoring.Tasks.StartGenSerMonIngestion.Task">
           <Name>Start Service Ingestion</Name>
