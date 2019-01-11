@@ -74,7 +74,7 @@ Important events (such as errors or discovered services) are logged in the Opera
 There is also an alarm rule that comes up when a service should be discovered but he does not exist on the server.
 
 ### AlertRule:
-![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/Rule.jpg)
+![alt text](https://github.com/spa5603/OpsMgr.GenericServiceMonitoring/blob/master/Graphics/Rule.png)
 
 
 ## Views:
