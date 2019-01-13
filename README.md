@@ -89,7 +89,7 @@ There is also an alarm rule that comes up when a service should be discovered bu
 Please let me know if you have any problems or questions about the Management Pack. So don't hesitate to contact me via github or twitter @_pabstsebastian
 
 ## License Terms
-OpsMgr GenericServiceMonitoring Copyright (C) 2018 Sebastian Pabst (spa5603)
+OpsMgr GenericServiceMonitoring Copyright (C) 2019 Sebastian Pabst (spa5603)
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
