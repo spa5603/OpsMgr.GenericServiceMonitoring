@@ -1,4 +1,4 @@
-# OpsMgr GenericServiceMonitoring ManagementPack
+## OpsMgr GenericServiceMonitoring ManagementPack
 
 ## Introduction:
 It is often necessary to monitor windows services across your entire SCOM environment. This Management Pack gives you the ability to easily and quickly discover and monitor hundreds of services. The wildcard(*) notation allows great flexibility in discovering the services you are looking for.
